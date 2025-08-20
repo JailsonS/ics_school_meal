@@ -18,7 +18,7 @@ O método de processamento dos dados emprega uma abordagem híbrida, combinando 
 Foi criado um único arquivo no formato .parquet unificando todas as informações contidas nos arquivos .json, esse processo foi executado no script python a_unificar_base.py que trata registros inconsistentes nos arquivos json. O tamanho total do arquivo unificado corresponde a 553 MB e contém 8M de registros. Abaixo o diretório do arquivo
 - `Cdata/PNAE/CORRECTED_SPENDING/`
 
-## 2.2 Limpar Dados A
+## 2.2 Limpar Dados
 A limpeza da base consiste de uma série de etapas que visa garantir a consistência dos tipos de informações como conversão de campos numéricos e de texto, a criação de identificadores únicos e extração de informações relevantes contidas nas variadas descrições dos produtos. Abaixo as etapas aplicadas no script.
 
 1. Conversão de campos numéricos - a base de dados apresenta campos numéricos que estão em formato de texto e foram convertidos para o números, como:
@@ -28,7 +28,7 @@ A limpeza da base consiste de uma série de etapas que visa garantir a consistê
 	- Quantidade de itens (qt)
 2. Limpeza de campos de texto - esses campos foram submetidos a um tratamento básico de textos conforme o apresentado na figura 1.
 3. Padronização das colunas - todas as colunas foram convertidas para o formato minúsculo.
-4. Extração de unidades e quantidades a partir da descrição do produto - esse procedimento foi realizado por meio de inteligência artificial devido à complexidade de variações de nomes e ausência de padronização de unidade. Foi utilizado o modelo `"gemini-2.5-flash-lite"` da Meta executado via langchain. Este procedimento possibilita o armazenamento de informações essenciais para a conversão de diferentes unidades para quilograma. Todos os produtos foram analisados e armazenados em um arquivo json chamado `item_change.json`. 
+4. Extração de unidades e quantidades a partir da descrição do produto - esse procedimento foi realizado por meio de inteligência artificial devido à complexidade de variações de nomes e ausência de padronização de unidade. Foi utilizado o modelo "gemini-2.5-flash-lite" da Meta executado via langchain. Este procedimento possibilita o armazenamento de informações essenciais para a conversão de diferentes unidades para quilograma. Todos os produtos foram analisados e armazenados em um arquivo json chamado item_change.json. E tambåem foram incorporados 3 novas variáveis ao banco como “unit_description”, “quantity_description” e “confidence”. 
 
 ```json
   "FARINHA DE QUIBE 500G GRANFINO": {
@@ -43,4 +43,12 @@ A limpeza da base consiste de uma série de etapas que visa garantir a consistê
   },
 ```
 
-5. Gerar identificador (ID) único para notas fiscais - O ID foi gerado a partir da junção do número do documento + data de emissão + valor da nota fiscal + id único do registro da linha. 
+5. Gerar identificador (ID) único para notas fiscais - O ID foi gerado a partir da junção do número do documento + data de emissão (somente números) + valor da nota fiscal + id único do registro da linha.
+   
+## 2.3 Limpeza Específica
+Essa etapa tem como finalidade principal ajustar registros onde existe ausência de valores (preços) dos produtos ou os valores são anormais (extremamente elevados ou baixos). Abaixo os principais procedimentos aplicados:
+- Tratamento de quantidades e preços vazios
+	- Valores são atribuídos com base na mediana do preço do mesmo produto no referido ano.
+
+## 2.3 Conversão para Quilogramas
+TO DO...
