@@ -5,7 +5,7 @@ Este documento detalha os procedimentos aplicados à base de dados de compra de 
 Os dados brutos das compras foram baixados do ambiente S3 para a máquina local de processamento. O diretório no S3 é:
 - `Cdata/PNAE/CORRECTED_SPENDING/`
 
-A base de dados completa, baixada, ocupa aproximadamente 5 GB de espaço e contém 1000 arquivos JSON.
+A base de dados completa, baixada, ocupa aproximadamente **8,18 GB** de espaço e contém **56.083** arquivos JSON.
 
 ## 2. Processamento
 
@@ -15,7 +15,7 @@ O método de processamento dos dados emprega uma abordagem híbrida, combinando 
 
 ## 2.1 Unificar Base
 
-Foi criado um único arquivo no formato .parquet unificando todas as informações contidas nos arquivos .json, esse processo foi executado no script python a_unificar_base.py que trata registros inconsistentes nos arquivos json. O tamanho total do arquivo unificado corresponde a 553 MB e contém 8M de registros. Abaixo o diretório do arquivo
+Foi criado um único arquivo no formato .parquet unificando todas as informações contidas nos arquivos .json, esse processo foi executado no script python a_unificar_base.py que trata registros inconsistentes nos arquivos json. O tamanho total do arquivo unificado corresponde a **553 MB** e contém **64,7 Milhões** de registros. Abaixo o diretório do arquivo
 - `Cdata/PNAE/CORRECTED_SPENDING/`
 
 ## 2.2 Limpar Dados
