@@ -11,7 +11,7 @@ A base de dados completa, baixada, ocupa aproximadamente 5 GB de espaço e cont�
 
 O método de processamento dos dados emprega uma abordagem híbrida, combinando técnicas heurísticas e um modelo de inteligência artificial. Além disso, foram utilizadas bibliotecas otimizadas para o processamento de grandes volumes de dados, como Polars, em vez de Pandas. A Figura 1 ilustra o fluxo geral do processamento.
 
-[![Figura 1 - Fluxograma de tratamento dos dados](https://drive.google.com/file/d/1aWyDPSdlr5umu-8MtzXpo5YcVI9Xo_vm/view?usp=drive_link "Figura 1 - Fluxograma de tratamento dos dados")](https://drive.google.com/file/d/1aWyDPSdlr5umu-8MtzXpo5YcVI9Xo_vm/view?usp=drive_link "Figura 1 - Fluxograma de tratamento dos dados")
+[![Figura 1 - Fluxograma de tratamento dos dados](https://github.com/JailsonS/ics_school_meal/blob/main/docs/images/readme_flow.png)
 
 ## 2.1 Unificar Base
 
