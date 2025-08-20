@@ -28,7 +28,7 @@ A limpeza da base consiste de uma série de etapas que visa garantir a consistê
 	- Quantidade de itens (qt)
 2. Limpeza de campos de texto - esses campos foram submetidos a um tratamento básico de textos conforme o apresentado na figura 1.
 3. Padronização das colunas - todas as colunas foram convertidas para o formato minúsculo.
-4. Extração de unidades e quantidades a partir da descrição do produto - esse procedimento foi realizado por meio de inteligência artificial devido à complexidade de variações de nomes e ausência de padronização de unidade. Foi utilizado o modelo "gemini-2.5-flash-lite" da Meta executado via langchain. Este procedimento possibilita o armazenamento de informações essenciais para a conversão de diferentes unidades para quilograma. Todos os produtos foram analisados e armazenados em um arquivo json chamado item_change.json. E tambåem foram incorporados 3 novas variáveis ao banco como “unit_description”, “quantity_description” e “confidence”. 
+4. Extração de unidades e quantidades a partir da descrição do produto - esse procedimento foi realizado por meio de inteligência artificial devido à complexidade de variações de nomes e ausência de padronização de unidade. Foi utilizado o modelo "gemini-2.5-flash-lite" da Meta executado via langchain. Este procedimento possibilita o armazenamento de informações essenciais para a conversão de diferentes unidades para quilograma. Todos os produtos foram analisados e armazenados em um arquivo json chamado item_change.json. E também foram incorporados 3 novas variáveis ao banco como “unit_description”, “quantity_description” e “confidence”. 
 
 ```json
   "FARINHA DE QUIBE 500G GRANFINO": {
