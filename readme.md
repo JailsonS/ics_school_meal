@@ -16,7 +16,7 @@ O método de processamento dos dados emprega uma abordagem híbrida, combinando 
 ## 2.1 Unificar Base
 
 Foi criado um único arquivo no formato .parquet unificando todas as informações contidas nos arquivos .json, esse processo foi executado no script python a_unificar_base.py que trata registros inconsistentes nos arquivos json. O tamanho total do arquivo unificado corresponde a **553 MB** e contém **64,7 Milhões** de registros. Abaixo o diretório do arquivo
-- `Cdata/PNAE/CORRECTED_SPENDING/`
+- `data/banco_analise_1.parquet`
 
 ## 2.2 Limpar Dados
 A limpeza da base consiste de uma série de etapas que visa garantir a consistência dos tipos de informações como conversão de campos numéricos e de texto, a criação de identificadores únicos e extração de informações relevantes contidas nas variadas descrições dos produtos. Abaixo as etapas aplicadas no script.
