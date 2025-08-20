@@ -1,5 +1,5 @@
 ## Processamento da Base de Dados PNAE
-Este documento detalha os procedimentos aplicados à base de dados de compra de alimentos para merenda escolar, no âmbito do Programa Nacional de Alimentação Escolar (PNAE), com o objetivo de limpar e padronizar os nomes dos produtos e converter as unidades. A base de dados foi fornecida pelo grupo de pesquisa da universidade XXX e acessada no ambiente Amazon S3, em formato JSON.
+Este documento detalha os procedimentos aplicados à base de dados de compra de alimentos para merenda escolar, no âmbito do Programa Nacional de Alimentação Escolar (PNAE), com o objetivo de limpar e padronizar os nomes dos produtos e converter as unidades. A base de dados foi fornecida pelo grupo de pesquisa da universidade de São Paulo e acessada no ambiente Amazon S3, em formato JSON.
 
 ## 1. Dados de Entrada
 Os dados brutos das compras foram baixados do ambiente S3 para a máquina local de processamento. O diretório no S3 é:
