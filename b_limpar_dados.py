@@ -24,7 +24,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from dotenv import load_dotenv
-
+from concurrent.futures import ThreadPoolExecutor, as_completed
 load_dotenv()
 
 '''
@@ -170,16 +170,20 @@ class FluxoDeLimpezaMerendaEscolar():
         items_to_process = [item for item in unique_items if item not in cache]
         today_batch = items_to_process[:DAILY_LIMIT]
 
-
-        # Processar apenas itens únicos
-        for item in tqdm(today_batch, desc="Processando itens únicos"):
-            if item in cache: continue
+        # private function to make multiple calls
+        def _process_item(item):
             try:
-                result = chain.invoke({"item": item})
+                return item, chain.invoke({"item": item})
             except Exception as e:
                 print(f"Erro em '{item}': {e}")
-                result = {"unit": None, "quantity": None, "confidence": 0.0}
-            cache[item] = result
+                return item, {"unit": None, "quantity": None, "confidence": 0.0}
+            
+        # Paralelizar chamadas
+        with ThreadPoolExecutor(max_workers=10) as executor:  # ajuste max_workers conforme limite de API
+            futures = {executor.submit(_process_item, item): item for item in today_batch}
+            for future in tqdm(as_completed(futures), total=len(today_batch), desc="Processando itens únicos"):
+                item, result = future.result()
+                cache[item] = result
 
         with open("item_cache.json", "w") as f: json.dump(cache, f, indent=2)
 
